@@ -77,14 +77,16 @@ def gen_dice_str(n):
     s += "|\n|       |\n'-------'"
     return s.split('\n')
 
-def dice_row_str(ns):
-    s = ""
+# ns = [dice1.value, dice2.value, ...]
+def dice_row_str(ns:list):
+    s = " "
+    # generate all of the the dice
     strs = [gen_dice_str(n) for n in ns]
     for y in range(5):
         for x in range(len(ns)):
-            part = strs[x][y]
+            part = strs[x][y] + ' '
             s += part
-        s += '\n'
+        s += '\n '
     
     return s
     
