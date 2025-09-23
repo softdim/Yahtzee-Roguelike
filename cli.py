@@ -82,9 +82,12 @@ def dice_row_str(ns):
     strs = [gen_dice_str(n) for n in ns]
     for y in range(5):
         for x in range(len(ns)):
-            part = ns[x][y]
+            part = strs[x][y]
             s += part
+        s += '\n'
+    
+    return s
     
 
 if __name__ == "__main__":
-    print('\n'.join(gen_dice_str(9999999)))
+    print(dice_row_str([0, 1, 5, 27]))
