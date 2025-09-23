@@ -1,0 +1,40 @@
+YAHTZEE
+
+OBJECTIVE: GET AS MANY POINTS AS POSSIBLE
+
+GAMELOOP:
+ - roll your dice
+ - choose whether to hold your dice
+ - you may choose to activate a pattern
+ - repeat 3x total
+ - unhold all dice
+ - pick a new dice
+
+DICE:
+ - have different tiers:
+    - COMMON (C): 66%
+    - UNCOMMON (U): 15% 
+    - RARE (R): 10%
+    - MYTHIC (M): 
+
+ SCREENSHOT:
+
+ PATTERNS:
+   | A               | B               | C
+ --+-----------------+-----------------+----------------
+ 1 | PATTERN1.....00 | PATTERN1.....00 | PATTERN1.....00  
+ 2 | PATTERN1.....00 | PATTERN1.....00 | PATTERN1.....00  
+ 3 | PATTERN1.....00 | PATTERN1.....00 | PATTERN1.....00  
+ 4 | PATTERN1.....00 | PATTERN1.....00 | PATTERN1.....00  
+ 5 | PATTERN1.....00 | PATTERN1.....00 | PATTERN1.....00  
+
+ DICE:
+ .-------. .-------. .-------. .-------. .-------.
+ | O   O | | O   O | | O   O | | O   O | | O   O |
+ | O O O | | O O O | | O O O | | O O O | | O O O |
+ | O   O | | O   O | | O   O | | O   O | | O   O |
+ '-------' '-------' '-------' '-------' '-------'
+  ##[1]##   ..[2]..   ##[3]##   ..[4]..   ##[5]##  <- HELD
+
+>> 24 (hold 2 and 4)
+>> B5 (claim pattern at B5)
