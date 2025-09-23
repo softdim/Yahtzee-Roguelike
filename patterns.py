@@ -1,4 +1,8 @@
 
+# gs = gamestate, vals = list of rolled dice values
+def chance(gs, vals):
+    return sum(vals)
+
 def same_count(vals, ct=2):
     maxv = 0
     for v in vals:

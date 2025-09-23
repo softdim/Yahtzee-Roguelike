@@ -18,7 +18,7 @@ class GameState:
 
 def main():
     gs = GameState()
-    active = True
+    active = False
     while active:
         gs.update()
 

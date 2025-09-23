@@ -89,7 +89,13 @@ def dice_row_str(ns:list):
         s += '\n '
     
     return s
-    
+
 
 if __name__ == "__main__":
-    print(dice_row_str([0, 1, 5, 27]))
+    from dice import *
+
+    die = SnakeEyes(None)
+    die.roll()
+    result = die.value
+
+    print(dice_row_str([result]))
