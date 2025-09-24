@@ -90,12 +90,51 @@ def dice_row_str(ns:list):
     
     return s
 
+def gen_table(items, ncol, colw, rowNDigits=2):
+    s = ""
+
+    # print the top row letters
+    s += " "*rowNDigits + " | "
+    underline = ""
+    for i in range(ncol):
+        s += chr(ord('A') + i) + ' '*colw
+        underline += '-' * colw
+        if i != ncol - 1:
+            s += '| '
+            underline += '-+-'
+    s += '\n'+'-'*rowNDigits+'-+-' + underline + '\n'
+
+    i = 0
+    y = 1
+    
+    while i < len(items):
+        # row number
+        rowNum = str(y)
+        rowNum = " " * (rowNDigits - len(rowNum)) + rowNum
+        s += rowNum + ' | '
+        for x in range(ncol):
+            item = items[i]
+            part1, part2 = item
+            nsp = colw - len(part1) - len(part2)
+            s += part1 + '.' * nsp + part2
+            if x != ncol - 1:
+                s += ' | '
+            i += 1
+        s += '\n'
+        y += 1
+    
+    return s
+
 
 if __name__ == "__main__":
     from dice import *
 
-    die = SnakeEyes(None)
-    die.roll()
-    result = die.value
+    items = [
+        (str(randint(0, 1000)), str(randint(0, 100000))) for _ in range(100)
+    ]
 
-    print(dice_row_str([result]))
+    print('b')
+
+    print(gen_table(items, 4, 15))
+
+    print('a')

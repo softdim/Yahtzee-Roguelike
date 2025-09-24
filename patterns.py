@@ -3,6 +3,7 @@
 def chance(gs, vals):
     return sum(vals)
 
+# ct = number of dice that have to be the same
 def same_count(vals, ct=2):
     maxv = 0
     for v in vals:
@@ -10,6 +11,7 @@ def same_count(vals, ct=2):
             maxv = v
     
     return maxv * ct
+
 
 DEFAULT_PATTERNS = {
     "double trouble": lambda _gs, vals: same_count(vals, 2),
