@@ -5,7 +5,7 @@ from patterns import *
 class GameState:
     # ndice = number of dice
     # patterns = patterns that can be claimed as the game progresses
-    def __init__(self, ndice=5, patterns = DEFAULT_PATTERNS):
+    def __init__(self, ndice=5, patterns = PATTERNS):
         self.ndice = ndice
         self.dice = [Die(self) for _ in range(ndice)]
         self.patterns = patterns

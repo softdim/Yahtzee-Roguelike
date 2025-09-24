@@ -133,8 +133,4 @@ if __name__ == "__main__":
         (str(randint(0, 1000)), str(randint(0, 100000))) for _ in range(100)
     ]
 
-    print('b')
-
     print(gen_table(items, 4, 15))
-
-    print('a')
