@@ -37,6 +37,15 @@ def dice_row_str(ns:list):
             s += part
         s += '\n '
     
+    return s[:-2]
+
+def gen_held_str(held:list):
+    s = ""
+    i = 0
+    for h in held:
+        i += 1
+        buff = "##" if h else ".."
+        s += f"  {buff}[{i}]{buff} "
     return s
 
 def gen_table(items, ncol, colw, rowNDigits=2):
@@ -93,4 +102,5 @@ if __name__ == "__main__":
     print(items)
 
     print(gen_table(items, 3, 40))
-    print(dice_row_str([1, 2, 3]))
+    print(dice_row_str([1, 2, 3, 4, 5]))
+    print(gen_held_str([True, False, True, True, False]))
