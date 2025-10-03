@@ -1,6 +1,6 @@
 from dice import *
 from patterns import PATTERNS
-from cli import dice_row_str
+from cli import *
 
 # GameState holds all of the data for the current game
 class GameState:
@@ -21,6 +21,10 @@ class GameState:
     def values(self):
         return [d.value for d in self.dice]
 
+    @property
+    def held(self):
+        return [d.held for d in self.dice]
+
     def reset_holds(self):
         for d in self.dice:
             d.held = False
@@ -29,7 +33,7 @@ class GameState:
 
 def main():
     gs = GameState()
-    rounds = 13  # like Yahtzee
+    rounds = len(PATTERNS)
     for r in range(rounds):
         gs.reset_holds()
         print(f"\n--- Round {r+1} ---")
@@ -38,6 +42,7 @@ def main():
         while gs.roll_count < 3:
             gs.roll()
             print(dice_row_str(gs.values))
+            print(gen_held_str(gs.held))
 
             if gs.roll_count == 3:
                 break
@@ -48,8 +53,8 @@ def main():
             elif action.strip():
                 try:
                     hold_idxs = [int(x)-1 for x in action.split()]
-                    for i, d in enumerate(gs.dice):
-                        d.held = (i in hold_idxs)
+                    for i in hold_idxs:
+                        gs.dice[i].held = not gs.dice[i].held
                 except ValueError:
                     print("Invalid input.")
 
