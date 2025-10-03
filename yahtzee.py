@@ -1,5 +1,5 @@
 from dice import *
-from patterns import *
+from patterns import PATTERNS
 from cli import dice_row_str
 
 # GameState holds all of the data for the current game

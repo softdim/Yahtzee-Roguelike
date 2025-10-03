@@ -1,55 +1,4 @@
-DICE_STR = r'''
-.-------.
-|       |
-|       |
-|       |
-'-------'
-.-------.
-|       |
-|   O   |
-|       |
-'-------'
-.-------.
-| O     |
-|       |
-|     O |
-'-------'
-.-------.
-| O     |
-|   O   |
-|     O |
-'-------'
-.-------.
-| O   O |
-|       |
-| O   O |
-'-------'
-.-------.
-| O   O |
-|   O   |
-| O   O |
-'-------'
-.-------.
-| O   O |
-| O   O |
-| O   O |
-'-------'
-.-------.
-| O   O |
-| O O O |
-| O   O |
-'-------'
-.-------.
-| O O O |
-| O   O |
-| O O O |
-'-------'
-.-------.
-| O O O |
-| O O O |
-| O O O |
-'-------'
-'''[1:-1].split('\n')
+DICE_STR = [l.strip() for l in open("dice_faces.txt").readlines()]
 
 DICE_STRS = {}
 for i in range(10):
@@ -113,6 +62,9 @@ def gen_table(items, ncol, colw, rowNDigits=2):
         rowNum = " " * (rowNDigits - len(rowNum)) + rowNum
         s += rowNum + ' | '
         for x in range(ncol):
+            if i >= len(items):
+                break
+
             item = items[i]
             part1, part2 = item
             nsp = colw - len(part1) - len(part2)
@@ -125,12 +77,20 @@ def gen_table(items, ncol, colw, rowNDigits=2):
     
     return s
 
+# takes in A1 and outputs 0
+def xy_to_idx(x:str, y:str, ncol):
+    u = ord(x.upper()) - ord('A')
+    v = int(y) - 1
+    return v * ncol + u
 
 if __name__ == "__main__":
     from dice import *
+    from patterns import DATA
 
     items = [
-        (str(randint(0, 1000)), str(randint(0, 100000))) for _ in range(100)
+        (key.upper(), str(randint(0, 27))) for key in DATA.keys()
     ]
+    print(items)
 
-    print(gen_table(items, 4, 15))
+    print(gen_table(items, 3, 40))
+    print(dice_row_str([1, 2, 3]))

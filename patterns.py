@@ -15,7 +15,7 @@ def same_count(vals, ct):
 def sum_of(vals, val):
     return val * vals.count(val)
 
-def my_house(vals):
+def double_charm(vals):
     a = vals[0]
     b = None
     for v in vals:
@@ -48,11 +48,11 @@ DATA = {
         "hint": "Add up two of the same dice.",
     },
     "a charm": {
-        "pattern": lambda vals: same_count(vals, 2),
+        "pattern": lambda vals: same_count(vals, 3),
         "hint": "Add up three of the same dice.",
     },
     "double double": {
-        "pattern": lambda vals: same_count(vals, 2),
+        "pattern": lambda vals: same_count(vals, 4),
         "hint": "Add up four of the same dice.",
     },
     "high stakes": {
@@ -84,7 +84,7 @@ DATA = {
         "hint": "Add up your sixes.",
     },
     "double charm": {
-        "pattern": my_house,
+        "pattern": double_charm,
         "hint": "Double trouble and a charm for 25 points.",
     },
     "partial sequence": {
