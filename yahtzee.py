@@ -32,6 +32,8 @@ class GameState:
 
 
 def main():
+    NCOL = 3
+
     gs = GameState()
     rounds = len(PATTERNS)
     for r in range(rounds):
@@ -60,17 +62,23 @@ def main():
 
         # After rolling, pick a scoring pattern
         print("Available patterns:")
-        for name, fn in gs.patterns.items():
-            score = fn(gs.values)
-            print(f" {name:15} -> {score}")
+        items = [
+            (key.upper(), str(randint(0, 27))) for key in PATTERNS.keys()
+        ]
+        print(gen_table(items, NCOL, 30))
 
         choice = input("Choose a pattern: ").strip()
+        if len(choice) != 2: return
+        idx = xy_to_idx(choice[0], choice[1], NCOL)
+        print("Pattern: ", list(PATTERNS.keys())[idx])
+        '''
         if choice in gs.patterns:
             score = gs.patterns[choice](gs.values)
             gs.score += score
             print(f"Scored {score} on {choice}. Total: {gs.score}")
         else:
             print("Invalid pattern, scoring 0.")
+        '''
 
     print(f"\nFinal Score: {gs.score}")
 
